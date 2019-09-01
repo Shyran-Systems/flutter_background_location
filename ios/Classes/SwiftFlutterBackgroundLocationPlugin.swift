@@ -18,6 +18,10 @@ public class SwiftFlutterBackgroundLocationPlugin: NSObject, FlutterPlugin, CLLo
         SwiftFlutterBackgroundLocationPlugin.locationManager = CLLocationManager()
         SwiftFlutterBackgroundLocationPlugin.locationManager?.delegate = self
         SwiftFlutterBackgroundLocationPlugin.locationManager?.requestAlwaysAuthorization()
+        
+        SwiftBackgroundLocationPlugin.locationManager?.allowsBackgroundLocationUpdates = true
+        SwiftBackgroundLocationPlugin.locationManager?.pausesLocationUpdatesAutomatically = false
+        
         SwiftFlutterBackgroundLocationPlugin.channel?.invokeMethod("location", arguments: "method")
 
         if (call.method == "start_location_service") {
